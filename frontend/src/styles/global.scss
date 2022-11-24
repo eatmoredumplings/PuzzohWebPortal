@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "LexendMega", sans-serif;
+  src: url('../assets//fonts/LexendMega.ttf')
+}
+
+@font-face {
+  font-family: "LexendDeca";
+  src: url('../assets//fonts/LexendDeca.ttf')
+}
+
+$primary-color:hsl(23, 100%, 65%);
+$secondary-color:hsl(72, 68%, 64%);
+
+* {
+  box-sizing: border-box;
+}  
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "LexendDeca", sans-serif;
+}
+
+.login-container {
+  min-height: calc(100vh - 40px * 2);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow: hidden;
+  background: linear-gradient(45deg, $primary-color, black);
+  padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    grid-template-columns: auto;
+    padding: 1rem;
+  }
+}

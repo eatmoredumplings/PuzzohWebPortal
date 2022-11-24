@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["assets/*", "assets/"],
+      "components/*": ["components/*", "components/"],
+      "context/*": ["context/*", "context/"],
+      "hooks/*": ["hooks/*", "hooks/"],
+      "middlewares/*": ["middlewares/*", "middleware/"],
+      "pages/*": ["pages/*", "pages/"],
+      "styles/*": ["styles/*", "styles/"],
+      "utils/*": ["utils/*", "utils/"],
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules"],
+}
