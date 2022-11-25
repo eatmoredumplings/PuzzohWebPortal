@@ -34,7 +34,7 @@ const jwt = require('jsonwebtoken');
         if (!validatePassword)
           return res.status(400).json("Incorrect password or username!")
 
-        const token = jwt.sign({ id: data[0].id }, "jwtSecret")
+        const token = jwt.sign({ id: data[0].id }, "jwtSecretKey")
 
         const { password, ...info } = data[0]
 

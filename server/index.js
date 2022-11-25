@@ -2,8 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require('dotenv');
 const cookieParser = require("cookie-parser");
-const vendorRoutes = require('./src/routes/vendorRoutes');
 const authRoutes = require('./src/routes/authRoutes');
+const vendorRoutes = require('./src/routes/vendorRoutes');
+const voucherRoutes = require('./src/routes/voucherRoutes');
 dotenv.config();
 
 const app = express();
@@ -22,7 +23,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World" });
 });
 app.use("/api/auth", authRoutes);
-app.use("/api/vendor", vendorRoutes);
+app.use("/api/user", vendorRoutes);
+app.use("/api", voucherRoutes);
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
