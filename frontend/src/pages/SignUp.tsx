@@ -17,7 +17,7 @@ export default function SignUp() {
   const register = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     try {
-      await Axios.post("/api/auth/signup", regInputs);
+      await Axios.post("/api/auth/signup", regInputs, { withCredentials: true });
     } catch (err: any) {
       alert(err.response.data);
     }

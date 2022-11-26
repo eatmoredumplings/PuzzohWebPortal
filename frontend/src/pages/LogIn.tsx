@@ -23,7 +23,7 @@ export default function LogIn() {
   const handleLogin = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     try {
-      await login(logInputs)
+      await login(logInputs);
       navigate("/")
     } catch (err: any) {
       alert(err.response.data)

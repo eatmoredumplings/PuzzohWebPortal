@@ -12,17 +12,19 @@ import {
   MdOutlineDocumentScanner
 } from "react-icons/md";
 import Axios from 'axios';
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "context/authContext";
 import GetStarted from "pages/GetStarted";
 
 const SideNavbar = () => {
   const { currentVendor } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleLogout = async (e: React.ChangeEvent<any>) => {
     e.preventDefault();
     try {
-      await Axios.post('/api/auth/logout')
+      await Axios.get('/api/auth/logout', { withCredentials: true });
+      await localStorage.removeItem('vendor');
       navigate('/login')
     } catch (err: any) {
       alert(err.response.data)
@@ -91,12 +93,6 @@ const SideNavbar = () => {
                   </h3>
                 </div>
               </Link>
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdOutlineMoreHoriz className="text-2xl text-gray-600 group-hover:text-white" />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold">
-                  More
-                </h3>
-              </div>
             </div>
 
             <div className=" my-4" onClick={handleLogout}>

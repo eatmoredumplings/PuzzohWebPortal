@@ -9,7 +9,8 @@ const getVouchers = (req, res) => {
   jwt.verify(token, "jwtSecretKey", (err, vendorInfo) => {
     if (err) return res.status(403).json("Invalid token!")
 
-    db.query("SELECT vou.* FROM vouchers AS vou JOIN vendors AS ven ON (ven.id = vou.vendorID) ORDER BY vou.createDate DESC",
+    db.query  ("SELECT vou.* FROM vouchers AS vou JOIN vendors AS ven ON (ven.id = vou.vendorID) WHERE ven.id = ? ORDER BY vou.createDate DESC",
+      [vendorInfo.id],
       (err, data) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json(data)
@@ -34,5 +35,18 @@ const addVoucher = (req, res) => {
   });
 }
 
+const deleteVoucher = (req, res) => {
+  const token = req.cookies.accessToken;
+  if (!token) return res.status(401).json("User is not logged in!")
 
-module.exports = { getVouchers, addVoucher }
+  jwt.verify(token, "jwtSecretKey", (err, vendorInfo) => {
+    db.query("DELETE from vouchers WHERE vendorID = ? AND id = ?",
+      [vendorInfo.id, req.body.id],
+      (err, data) => {
+          if (err) return res.status(500).json(err);
+          return res.status(200).json('Voucher has been deleted.')
+        });
+      });
+}
+
+module.exports = { getVouchers, addVoucher, deleteVoucher }
