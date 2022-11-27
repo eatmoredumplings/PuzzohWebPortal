@@ -22,6 +22,10 @@ const jwt = require('jsonwebtoken');
     });
 };
 
+    const test = (req, res) => {
+        return (req.body.email)
+    }
+
  const logIn =  (req, res) => {
     const email = req.body.email
 
@@ -51,4 +55,4 @@ const logOut = (req, res) => {
     }).status(200).json("User has been logged out.")
 };
 
-module.exports = { signUp, logIn, logOut }
+module.exports = { signUp, logIn, logOut, test }

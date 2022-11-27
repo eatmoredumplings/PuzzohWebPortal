@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const authRoutes = require('./src/routes/authRoutes');
 const vendorRoutes = require('./src/routes/vendorRoutes');
 const voucherRoutes = require('./src/routes/voucherRoutes');
+const documentRoutes = require('./src/routes/documentRoutes');
+
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,7 @@ app.use(cookieParser())
 app.use("/api/auth", authRoutes);
 app.use("/api/user", vendorRoutes);
 app.use("/api", voucherRoutes);
+app.use("/api", documentRoutes);
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
